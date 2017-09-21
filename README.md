@@ -16,3 +16,7 @@ Installing deps:
 - pip install pipenv
 
 - add ~/.local/bin to PATH
+
+Run server:
+
+pipenv run python irsap.py
