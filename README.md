@@ -2,12 +2,11 @@ Demo Platform
 
 Features:
 
-- API to display items from db
+- API to display (filter) items from db
 - Upload and decode barcodes
 - auto-logging
 
-
-Installing deps:
+Installing deps (Ubuntu tested):
 
 - sudo apt-get install libzbar-dev
 
@@ -17,6 +16,32 @@ Installing deps:
 
 - add ~/.local/bin to PATH
 
-Run server:
+Deploy server:
 
-pipenv run python irsap.py
+- pipenv install
+
+- pipenv run python irsap.py
+
+Usage:
+
+    - http://localhost:5000
+
+    - Feed Data (feeding some data to db)
+
+    - http://localhost:5000/items/{name}/{value} - filter items by name and value
+
+            eg. http://localhost:5000/items/error/-45
+    
+    - CRUD operations (Content-Type: application/json)
+
+            eg. POST http://localhost:5000/items/ {"name": 500, "error": -1000, "order": 10, "status": 0, "processed": 9}
+
+            eg. PUT http://localhost:5000/items/ {"name":500,"error":200}
+
+            eg. DELETE http://localhost:5000/items/name/500
+
+    - Upload a barcode (some ex in assets/uploads folder) will decode into a string
+
+    - All operations are logged
+
+    - Plot Error/Order
