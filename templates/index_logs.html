@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mini.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+
+    <title>List {{ condition }} {{ title }}</title>
+  </head>
+  <body>
+    <script>
+      function plot_data() {
+        var label = document.getElementById("label").value;
+        var value = document.getElementById("value").value;
+
+        fetch('/items/plot/', {
+            method: 'POST',
+            headers: {'Content-Type':'application/x-www-form-urlencoded'}, 
+            body: 'label='+label+'&value='+value
+        });
+      }
+    </script>
+    <h1>{{ user }} Platform</h1>
+    <table id="ver-minimalist" style="width:800px">
+    <tr>
+    <th><a href="http://localhost:5000/items/">Items</a></th>
+    <th><a href="http://localhost:5000/barcodes/">Barcodes</a></th>
+    <th><a href="http://localhost:5000/logs/">Logs</a></th>
+    <th><a href="http://localhost:5000/barcodes/upload/">Upload</a></th>
+    <th><a href="http://localhost:5000/items/feed_table_data/">Feed Data</a></th>
+    </tr>
+    </table>
+    <h3>List {{ condition }} {{ title }}</h3>
+    <div>
+    <table id="ver-minimalist">
+    <tr>
+      {% for h in headers %}
+      <th>{{h}}</th>
+      {% endfor %}
+    </tr>
+    {% for item in items %}
+      <tr>
+        <td>{{ item.datetime }}</td>
+        <td>{{ item.source }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.content }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.error }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    </div>
+  </body>
+    <footer>
+    <div>&copy; Cristi</div>
+  </footer>
+</html>

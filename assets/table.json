@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "name": 100,
+      "order": 2,
+      "error": -45,
+      "processed": 66,
+      "status": 1
+    },
+    {
+      "name": 200,
+      "order": 9,
+      "error": 4,
+      "processed": 88,
+      "status": 0
+    },
+    {
+      "name": 300,
+      "order": 5,
+      "error": -100,
+      "processed": -100,
+      "status": 1
+    },
+    {
+      "name": 400,
+      "order": 6,
+      "error": 55,
+      "processed": 8,
+      "status": 0
+    }
+  ]
+}

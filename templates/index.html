@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mini.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <title>List {{ condition }} {{ title }}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+    window.onload = function() {
+      
+      var a = document.getElementById("plotData");
+
+      a.onclick = function() {
+        var label = document.getElementById("label").value;
+        var value = document.getElementById("value").value;
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:5000/items/plot/",
+          data: {'label': label, 'value':value},
+          success: null,
+          };
+
+        return false;
+      }
+    }
+    </script>
+    <div>
+    <h1>{{ user }} Platform</h1>
+    <table id="ver-minimalist" style="width:800px">
+    <tr>
+    <th><a href="http://localhost:5000/items/">Items</a></th>
+    <th><a href="http://localhost:5000/barcodes/">Barcodes</a></th>
+    <th><a href="http://localhost:5000/logs/">Logs</a></th>
+    <th><a href="http://localhost:5000/barcodes/upload/">Upload</a></th>
+    <th><a href="http://localhost:5000/items/feed_table_data/">Feed Data</a></th>
+    </tr>
+    </table>
+    <h3>List {{ condition }} {{ title }}</h3>
+    </div>
+    <div>
+    <table id="ver-minimalist">
+    <tr>
+      {% for h in headers %}
+      <th>{{h}}</th>
+      {% endfor %}
+    </tr>
+    <tbody>
+    {% for item in items %}
+      <tr>
+        <td >{{ item.name }}</td>
+        <td >{{ item.order }}</td>
+        <td >{{ item.error }}</td>
+        <td >{{ item.processed }}</td>
+        <td >{{ item.status }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    <div>
+    <h3>Plot {{title}}</h3>
+<p>
+      <a id="plotData" href="http://localhost:5000/items/plot/">Plot Data</a></p>
+    </div>
+  </body>
+  <footer>
+    <div>&copy; Cristi</div>
+  </footer>
+</html>
