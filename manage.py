@@ -1,5 +1,5 @@
 from flask_script import Manager
-from irsap import app
+from gogo import app
 
 from flask import url_for
 

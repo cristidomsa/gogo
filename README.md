@@ -20,7 +20,7 @@ Deploy server:
 
 - pipenv install
 
-- pipenv run python irsap.py
+- pipenv run python gogo.py
 
 Usage:
 
