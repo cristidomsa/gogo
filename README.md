@@ -9,6 +9,10 @@ Features:
 
 Installing deps:
 
-sudo apt-get install libzbar-dev
+- sudo apt-get install libzbar-dev
 
-sudo apt-get install mongodb
+- sudo apt-get install mongodb
+
+- pip install pipenv
+
+- add ~/.local/bin to PATH
