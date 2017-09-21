@@ -6,6 +6,9 @@ Features:
 - Upload and decode barcodes
 - auto-logging
 
+
+Installing deps:
+
 sudo apt-get install libzbar-dev
 
 sudo apt-get install mongodb
